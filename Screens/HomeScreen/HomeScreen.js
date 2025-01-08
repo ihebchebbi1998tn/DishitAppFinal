@@ -1,225 +1,348 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useClerk } from '@clerk/clerk-expo';
-import { Ionicons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { 
+  Text, 
+  StyleSheet, 
+  ScrollView, 
+  View, 
+  Image, 
+  TouchableOpacity,
+  useWindowDimensions,
+} from 'react-native';
+import { Card, Button, Searchbar, Avatar, IconButton } from 'react-native-paper';
+import { LinearGradient } from 'expo-linear-gradient';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import FooterNavigator from '../FooterNavigator/FooterNavigator';
-
-export default function HomeScreen({ navigation }) {
-  const { signOut } = useClerk();
-
-  const handleSignOut = async () => {
-    try {
-      await AsyncStorage.removeItem('userData');
-      await signOut();
-      navigation.navigate('Login');
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
-  };
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Header from '../Commons/Header';
+export default function HomeScreen() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const { width } = useWindowDimensions();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.locationContainer}>
-          <Ionicons name="location-outline" size={24} color="black" />
-          <Text style={styles.locationText}>A-50 St Royal</Text>
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <Header />
+        <View style={styles.impactContainer}>
+          <LinearGradient
+            colors={['#FF6B00', '#FF8C3B']}
+            style={styles.impactCard}
+          >
+            <Text style={styles.impactTitle}>Your Impact</Text>
+            <View style={styles.impactStats}>
+              <View style={styles.statItem}>
+                <Text style={styles.statNumber}>2,450</Text>
+                <Text style={styles.statLabel}>Meals Shared</Text>
+              </View>
+              <View style={styles.statDivider} />
+              <View style={styles.statItem}>
+                <Text style={styles.statNumber}>127</Text>
+                <Text style={styles.statLabel}>Lives Touched</Text>
+              </View>
+              <View style={styles.statDivider} />
+              <View style={styles.statItem}>
+                <Text style={styles.statNumber}>15</Text>
+                <Text style={styles.statLabel}>NGOs Helped</Text>
+              </View>
+            </View>
+          </LinearGradient>
         </View>
-        <TouchableOpacity onPress={handleSignOut}>
-          <Ionicons name="log-out-outline" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
-
-      <ScrollView 
-        style={styles.content} 
-        contentContainerStyle={styles.scrollContent}
-      >
-        <View style={styles.bannerContainer}>
-          <Image
-            source={{ uri: 'https://placeholder.com/banner-image' }}
-            style={styles.bannerImage}
-          />
-          <View style={styles.bannerTextContainer}>
-            <Text style={styles.bannerTitle}>BRIDGING THE</Text>
-            <Text style={styles.bannerTitle}>GAP BETWEEN</Text>
-            <Text style={styles.bannerTitle}>FOOD WASTE &</Text>
-            <Text style={styles.bannerTitle}>HUNGER</Text>
-          </View>
+        <View style={styles.quickActions}>
+          <TouchableOpacity style={styles.actionButton}>
+            <MaterialCommunityIcons name="food-apple" size={24} color="#FF6B00" />
+            <Text style={styles.actionText}>Donate </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton}>
+            <MaterialCommunityIcons name="map-marker" size={24} color="#FF6B00" />
+            <Text style={styles.actionText}>Find NGOs</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity style={styles.actionButton}>
+            <MaterialCommunityIcons name="history" size={24} color="#FF6B00" />
+            <Text style={styles.actionText}>History</Text>
+          </TouchableOpacity>
         </View>
-
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>NGOs Request</Text>
+          <Text style={styles.sectionTitle}>Urgent Needs</Text>
           <TouchableOpacity>
-            <Text style={styles.viewAll}>View All</Text>
+            <Text style={styles.seeAll}>See All</Text>
           </TouchableOpacity>
         </View>
-
-        <ScrollView horizontal style={styles.ngoCards}>
-          <View style={styles.ngoCard}>
-            <Image
-              source={{ uri: 'https://placeholder.com/ngo1' }}
-              style={styles.ngoImage}
-            />
-            <Text style={styles.ngoName}>FoodCare Foundation</Text>
-            <Text style={styles.ngoDescription}>Need food donations all the time!</Text>
-            <Text style={styles.volunteers}>25,000 VT</Text>
-          </View>
-          <View style={styles.ngoCard}>
-            <Image
-              source={{ uri: 'https://placeholder.com/ngo2' }}
-              style={styles.ngoImage}
-            />
-            <Text style={styles.ngoName}>NutriServe Society</Text>
-            <Text style={styles.ngoDescription}>Help us help you</Text>
-            <Text style={styles.volunteers}>5,000 VT</Text>
-          </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {[1, 2, 3].map((item) => (
+            <Card key={item} style={[styles.urgentCard, { width: width * 0.75 }]} >
+              <View style={styles.urgentBadge}>
+                <Text style={styles.urgentText}>Urgent</Text>
+              </View>
+              <Image
+                source={{ uri: 'https://placeholder.co/200x150' }}
+                style={styles.urgentImage}
+              />
+              <View style={styles.urgentContent}>
+                <Text style={styles.urgentTitle}>Orphanage Needs Meals</Text>
+                <Text style={styles.urgentDetails}>Need 50 meals by today 6 PM</Text>
+                <Button mode="contained" style={styles.helpButton}>Help Now</Button>
+              </View>
+            </Card>
+          ))}
         </ScrollView>
-
-        <View style={styles.actionCards}>
-          <TouchableOpacity style={styles.actionCard}>
-            <Image
-              source={{ uri: 'https://placeholder.com/food-donation' }}
-              style={styles.actionIcon}
-            />
-            <Text style={styles.actionText}>Food Donation</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.actionCard}>
-            <Image
-              source={{ uri: 'https://placeholder.com/ngo-connection' }}
-              style={styles.actionIcon}
-            />
-            <Text style={styles.actionText}>NGO Connection</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.actionCard}>
-            <Image
-              source={{ uri: 'https://placeholder.com/track-delivery' }}
-              style={styles.actionIcon}
-            />
-            <Text style={styles.actionText}>Track Delivery</Text>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Active Campaigns</Text>
+          <TouchableOpacity>
+            <Text style={styles.seeAll}>View All</Text>
           </TouchableOpacity>
         </View>
+        {[1, 2].map((campaign) => (
+          <Card key={campaign} style={styles.campaignCard}>
+            <View style={styles.campaignContent}>
+              <Image
+                source={{ uri: 'https://placeholder.co/100x100' }}
+                style={styles.campaignImage}
+              />
+              <View style={styles.campaignInfo}>
+                <Text style={styles.campaignTitle}>Weekend Food Drive</Text>
+                <Text style={styles.campaignOrg}>By: Food For All NGO</Text>
+                <View style={styles.progressContainer}>
+                  <View style={styles.progressBar}>
+                    <View style={[styles.progress, { width: '75%' }]} />
+                  </View>
+                  <Text style={styles.progressText}>75% Complete</Text>
+                </View>
+              </View>
+            </View>
+          </Card>
+        ))}
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Latest Articles</Text>
+          <TouchableOpacity>
+            <Text style={styles.seeAll}>More</Text>
+          </TouchableOpacity>
+        </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {[1, 2, 3].map((article) => (
+            <Card key={article} style={styles.articleCard}>
+              <Image
+                source={{ uri: 'https://placeholder.co/150x200' }}
+                style={styles.articleImage}
+              />
+              <View style={styles.articleContent}>
+                <Text style={styles.articleTitle}>How to Reduce Food Waste</Text>
+                <Text style={styles.articlePreview}>Learn about the best practices...</Text>
+                <Text style={styles.readMore}>Read More →</Text>
+              </View>
+            </Card>
+          ))}
+        </ScrollView>
       </ScrollView>
-
       <FooterNavigator />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F8F9FA',
+  },
+  scrollContainer: {
+    paddingBottom: 20,
+    paddingHorizontal: 16,
   },
   header: {
+    padding: 16,
+    backgroundColor: '#FFFFFF',
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  impactContainer: {
+    padding: 16,
+  },
+  impactCard: {
+    padding: 16,
+    borderRadius: 12,
+    elevation: 3,
+  },
+  impactTitle: {
+    fontSize: 22,
+    color: '#FFF',
+    fontWeight: 'bold',
+  },
+  impactStats: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 15,
-    paddingTop: 40,
+    marginTop: 16,
   },
-  locationContainer: {
-    flexDirection: 'row',
+  statItem: {
     alignItems: 'center',
   },
-  locationText: {
-    marginLeft: 5,
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  content: {
-    backgroundColor: '#fff',
-  },
-  scrollContent: {
-    paddingBottom: 20, // Add some padding at the bottom if needed
-  },
-  bannerContainer: {
-    height: 200,
-    position: 'relative',
-    marginHorizontal: 15,
-    marginBottom: 20,
-    borderRadius: 15,
-    overflow: 'hidden',
-  },
-  bannerImage: {
-    width: '100%',
-    height: '100%',
-  },
-  bannerTextContainer: {
-    position: 'absolute',
-    top: 20,
-    left: 20,
-  },
-  bannerTitle: {
-    color: 'white',
-    fontSize: 24,
+  statNumber: {
+    fontSize: 20,
     fontWeight: 'bold',
-    lineHeight: 32,
+    color: '#FFF',
+  },
+  statLabel: {
+    fontSize: 14,
+    color: '#FFF',
+  },
+  statDivider: {
+    height: 24,
+    borderLeftWidth: 1,
+    borderColor: '#FFF',
+  },
+  quickActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 16,
+    paddingHorizontal: 8,
+  },
+  actionButton: {
+    flex: 1,
+    height: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    marginHorizontal: 5,
+    borderRadius: 8,
+    padding: 10,
+  },
+  actionText: {
+    fontSize: 14,
+    color: '#333',
+    marginTop: 4,
   },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 15,
-    marginBottom: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#333',
   },
-  viewAll: {
-    color: '#4CAF50',
+  seeAll: {
+    fontSize: 14,
+    color: '#FF6B00',
   },
-  ngoCards: {
-    paddingHorizontal: 15,
+  urgentCard: {
+    marginHorizontal: 8,
+    marginTop: 12,
+    borderRadius: 12,
   },
-  ngoCard: {
-    width: 200,
-    marginRight: 15,
-    borderRadius: 10,
-    backgroundColor: '#f5f5f5',
-    padding: 10,
+  urgentBadge: {
+    position: 'absolute',
+    top: 12,
+    left: 12,
+    backgroundColor: '#FF6B00',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 8,
   },
-  ngoImage: {
+  urgentText: {
+    color: '#FFF',
+    fontWeight: 'bold',
+  },
+  urgentImage: {
     width: '100%',
-    height: 120,
-    borderRadius: 10,
-    marginBottom: 10,
+    height: 150,
+    borderRadius: 12,
   },
-  ngoName: {
+  urgentContent: {
+    padding: 12,
+  },
+  urgentTitle: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 'bold',
+    color: '#333',
   },
-  ngoDescription: {
+  urgentDetails: {
     fontSize: 14,
     color: '#666',
-    marginTop: 5,
+    marginVertical: 8,
   },
-  volunteers: {
-    fontSize: 14,
-    color: '#4CAF50',
-    marginTop: 5,
+  helpButton: {
+    backgroundColor: '#FF6B00',
+    borderRadius: 8,
   },
-  actionCards: {
+  campaignCard: {
+    marginVertical: 12,
+    marginHorizontal: 16,
+    borderRadius: 12,
+  },
+  campaignContent: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 15,
-    marginTop: 20,
+    padding: 16,
   },
-  actionCard: {
-    width: '30%',
-    aspectRatio: 1,
-    backgroundColor: '#FFE5E5',
-    borderRadius: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
+  campaignImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 12,
   },
-  actionIcon: {
-    width: 40,
-    height: 40,
-    marginBottom: 10,
+  campaignInfo: {
+    marginLeft: 16,
+    flex: 1,
   },
-  actionText: {
+  campaignTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  campaignOrg: {
     fontSize: 14,
-    textAlign: 'center',
+    color: '#777',
+    marginVertical: 4,
+  },
+  progressContainer: {
+    marginTop: 12,
+  },
+  progressBar: {
+    height: 10,
+    width: '100%',
+    backgroundColor: '#E0E0E0',
+    borderRadius: 5,
+  },
+  progress: {
+    height: '100%',
+    backgroundColor: '#FF6B00',
+    borderRadius: 5,
+  },
+  progressText: {
+    fontSize: 12,
+    color: '#333',
+    textAlign: 'right',
+    marginTop: 4,
+  },
+  articleCard: {
+    width: 150,
+    marginHorizontal: 8,
+    marginTop: 16,
+    borderRadius: 8,
+  },
+  articleImage: {
+    width: '100%',
+    height: 120,
+    borderRadius: 8,
+  },
+  articleContent: {
+    padding: 8,
+  },
+  articleTitle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  articlePreview: {
+    fontSize: 12,
+    color: '#666',
+    marginTop: 4,
+  },
+  readMore: {
+    fontSize: 12,
+    color: '#FF6B00',
+    marginTop: 8,
   },
 });

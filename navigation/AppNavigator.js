@@ -10,6 +10,8 @@ import StartScreen from '../Screens/StartScreen/StartScreen';
 import HomeScreen from '../Screens/HomeScreen/HomeScreen';
 import SignUpGmail from '../Screens/ContinueSignupScreen/SignUpGmail';
 import ScreenHome from '../Screens/ScreenHome';
+import SettingsScreen from '../Screens/SettingsScreen/SettingsScreen';
+import MapScreen from '../Screens/MapScreen/MapScreen';
 
 const Stack = createStackNavigator();
 
@@ -59,6 +61,16 @@ export default function AppNavigator() {
         component={HomeScreen}
         options={{ headerShown: false }} // Hide header for this screen
       />
+       <Stack.Screen
+        name="MapScreen"
+        component={MapScreen}
+        options={{ headerShown: false }} // Hide header for this screen
+      />
+        <Stack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{ headerShown: false }} // Hide header for this screen
+      />
       <Stack.Screen
         name="ScreenHome"
         component={ScreenHome}
@@ -69,6 +81,7 @@ export default function AppNavigator() {
         component={SignUpGmail}
         options={{ headerShown: false }} // Hide header for this screen
       />
+      
     </Stack.Navigator>
   );
 }

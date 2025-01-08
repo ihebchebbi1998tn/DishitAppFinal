@@ -53,7 +53,7 @@ export default function SignUpGmail({ navigation }) {
     }
 
     try {
-      const response = await fetch('http://192.168.1.6:5002/api/users', {
+      const response = await fetch('http://192.168.1.12:5002/api/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

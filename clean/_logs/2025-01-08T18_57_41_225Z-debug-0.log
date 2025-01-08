@@ -6,9 +6,9 @@
 5 silly config:load:file:C:\Users\ihebc\.npmrc
 6 silly config:load:file:C:\Users\ihebc\AppData\Roaming\npm\etc\npmrc
 7 verbose title npm start
-8 verbose argv "start"
-9 verbose logfile logs-max:10 dir:C:\Users\ihebc\OneDrive\Desktop\Dishit\Dishit\clean\_logs\2024-12-30T15_37_18_543Z-
-10 verbose logfile C:\Users\ihebc\OneDrive\Desktop\Dishit\Dishit\clean\_logs\2024-12-30T15_37_18_543Z-debug-0.log
+8 verbose argv "start" "--clear"
+9 verbose logfile logs-max:10 dir:C:\Users\ihebc\OneDrive\Desktop\Dishit\Dishit\clean\_logs\2025-01-08T18_57_41_225Z-
+10 verbose logfile C:\Users\ihebc\OneDrive\Desktop\Dishit\Dishit\clean\_logs\2025-01-08T18_57_41_225Z-debug-0.log
 11 silly logfile start cleaning logs, removing 1 files
 12 silly logfile done cleaning log files
 13 verbose exit 0

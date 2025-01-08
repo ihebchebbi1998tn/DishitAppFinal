@@ -10,7 +10,7 @@ const GoogleLoginButton = ({ navigation, user }) => {
   // Function to check if email exists in the database
   const checkEmailExists = async (email) => {
     try {
-      const response = await fetch('http://192.168.1.6:5002/api/check-email', {
+      const response = await fetch('http://192.168.1.12:5002/api/check-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

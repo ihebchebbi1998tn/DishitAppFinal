@@ -6,6 +6,7 @@ import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo';
 import { tokenCache } from './cache';
 import { navigationRef } from './RootNavigation'; // Ensure the path is correct
 import { Provider as PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -19,9 +20,11 @@ export default function App() {
   return (
     <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
       <ClerkLoaded>
-        <NavigationContainer ref={navigationRef}> {/* Set the ref here */}
-          <AppNavigator />
-        </NavigationContainer>
+        <SafeAreaProvider> {/* SafeAreaProvider wraps the whole app */}
+          <NavigationContainer ref={navigationRef}> {/* Set the ref here */}
+            <AppNavigator />
+          </NavigationContainer>
+        </SafeAreaProvider>
       </ClerkLoaded>
     </ClerkProvider>
   );

@@ -22,7 +22,7 @@ export default function ScreenHome() {
       if (!user?.primaryEmailAddress?.emailAddress) return;
 
       try {
-        const response = await fetch('http://192.168.1.6:5002/api/check-email', {
+        const response = await fetch('http://192.168.1.12:5002/api/check-email', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
