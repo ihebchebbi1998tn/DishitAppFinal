@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, StyleSheet } from 'react-native';
 import { IconButton, Searchbar } from 'react-native-paper';
 import { useWindowDimensions } from 'react-native';
-import { StyleSheet } from 'react-native';
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -14,16 +13,19 @@ const Header = () => {
         <View style={styles.userInfo}>
           {/* Profile Picture */}
           <Image 
-            source={{ uri: 'https://img.freepik.com/free-vector/portrait-boy-with-blonde-hair-blue-eyes_1308-157023.jpg' }} // Placeholder image URL
+            source={{ uri: 'https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg' }}
             style={styles.profilePic}
           />
-          <View style={styles.welcomeText}>
+          <View>
             <Text style={styles.greeting}>Good Morning,</Text>
-            <Text style={styles.username}>John Doe</Text>
+            <Text style={styles.username}>Iheb Chebbi</Text>
           </View>
         </View>
         <View style={styles.headerIcons}>
-          <IconButton icon="bell-outline" size={24} style={styles.iconButton} badge={3} />
+          <View style={styles.notificationWrapper}>
+            <IconButton icon="bell-outline" size={24} style={styles.iconButton} />
+            <View style={styles.notificationDot} />
+          </View>
           <IconButton icon="account-eye-outline" size={24} style={styles.iconButton} />
         </View>
       </View>
@@ -42,21 +44,19 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   header: {
-    padding: 16,
-    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 16,
+    paddingBottom: 16,
+    backgroundColor: '#FFF',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E0E0E0',
   },
   headerTop: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 12,
   },
   userInfo: {
     flexDirection: 'row',
@@ -66,30 +66,38 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    marginRight: 12,
-  },
-  welcomeText: {
-    marginLeft: 12,
+    marginRight: 10,
   },
   greeting: {
     fontSize: 14,
-    color: '#666',
+    color: '#757575',
   },
   username: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-    fontFamily: 'Roboto',
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#212121',
   },
   headerIcons: {
     flexDirection: 'row',
   },
   iconButton: {
-    marginHorizontal: 4,
+    marginHorizontal: 6,
+  },
+  notificationWrapper: {
+    position: 'relative',
+  },
+  notificationDot: {
+    position: 'absolute',
+    top: '30%',
+    left: '30%',
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#FF6B00',
   },
   searchBar: {
-    borderRadius: 12,
-    backgroundColor: '#F5F5F5',
+    borderRadius: 8,
+    backgroundColor: '#EFEFEF',
     elevation: 0,
   },
 });

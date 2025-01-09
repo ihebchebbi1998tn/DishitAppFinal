@@ -40,17 +40,18 @@ const FooterNavigator = () => {
       />
 
       <Tab.Screen
-        name="Orders"
+        name="Community"
         component={EmptyComponent}
         listeners={{
           tabPress: (e) => {
             e.preventDefault();
-            navigation.navigate('Orders');
+            navigation.navigate('CommunityScreen');
           },
         }}
         options={{
           tabBarIcon: ({ color }) => (
-            <Icon name="location-outline" size={25.2} color={color} />
+            <Icon name="earth-outline" size={25.2} color={color} />
+
           ),
         }}
       />

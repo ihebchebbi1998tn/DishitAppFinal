@@ -48,7 +48,7 @@ export default function SettingsScreen() {
             size={64}
             source={{ uri: 'https://placeholder.co/150x150' }}
           />
-          <Text style={styles.username}>John Doe</Text>
+          <Text style={styles.username}>Iheb Chebbi</Text>
           <Text style={styles.userEmail}>johndoe@example.com</Text>
         </View>
 

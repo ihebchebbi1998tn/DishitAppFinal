@@ -12,6 +12,7 @@ import SignUpGmail from '../Screens/ContinueSignupScreen/SignUpGmail';
 import ScreenHome from '../Screens/ScreenHome';
 import SettingsScreen from '../Screens/SettingsScreen/SettingsScreen';
 import MapScreen from '../Screens/MapScreen/MapScreen';
+import CommunityScreen from '../Screens/CommunityScreen/CommunityScreen';
 
 const Stack = createStackNavigator();
 
@@ -74,6 +75,11 @@ export default function AppNavigator() {
       <Stack.Screen
         name="ScreenHome"
         component={ScreenHome}
+        options={{ headerShown: false }} // Hide header for this screen
+      />
+       <Stack.Screen
+        name="CommunityScreen"
+        component={CommunityScreen}
         options={{ headerShown: false }} // Hide header for this screen
       />
       <Stack.Screen
