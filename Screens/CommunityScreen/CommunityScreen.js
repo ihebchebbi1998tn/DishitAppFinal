@@ -14,6 +14,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import FooterNavigator from '../FooterNavigator/FooterNavigator';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../Commons/Header';
+import Cards4 from './Components/Cards4';
 
 export default function CommunityScreen() {
   const { width } = useWindowDimensions();
@@ -28,6 +29,7 @@ export default function CommunityScreen() {
             <Text style={styles.bannerSubText}>Support Local, Share, and Connect</Text>
           </LinearGradient>
         </View>
+        <Cards4 />
       </ScrollView>
       <FooterNavigator />
     </SafeAreaView>

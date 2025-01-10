@@ -182,7 +182,7 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.forgotPassword}>Forgot Password?</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={handleLogin} disabled={loading}>
-                <LinearGradient colors={['#9d4d06', '#ee9424']} start={{ x: 0, y: 1 }} end={{ x: 0, y: 0 }} style={styles.gradientButton}>
+                <LinearGradient colors={['#FF6B00', '#ee9424']} start={{ x: 0, y: 1 }} end={{ x: 0, y: 0 }} style={styles.gradientButton}>
                   <Text style={styles.buttonText}>{loading ? 'Logging in...' : 'Login'}</Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -192,7 +192,7 @@ export default function LoginScreen({ navigation }) {
               </View>
 
               <TouchableOpacity style={styles.googleButton} onPress={onGooglePress}>
-                <FontAwesome name="google" size={24} color="#DB4437" />
+                <FontAwesome name="google" size={24} color="#FF6B00" />
                 <Text style={styles.googleText}>Sign in with Google</Text>
               </TouchableOpacity>
               

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Text,
-  SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
@@ -14,6 +13,10 @@ import {
 import { Avatar, Button, Divider } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import FooterNavigator from '../FooterNavigator/FooterNavigator';
+import { useNavigation } from '@react-navigation/native'; // Import for navigation
+import { useClerk } from '@clerk/clerk-react'; // Import Clerk hook for authentication
+import Header from '../Commons/Header';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SettingsScreen() {
   const { width } = useWindowDimensions();
@@ -21,6 +24,9 @@ export default function SettingsScreen() {
   const [languageModalVisible, setLanguageModalVisible] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [faqsVisible, setFaqsVisible] = useState(false);
+  const { signOut } = useClerk(); // Clerk's signOut method
+  const navigation = useNavigation(); // React Navigation hook to navigate
+  const [logoutModalVisible, setLogoutModalVisible] = useState(false); // State for the logout confirmation modal
 
   const faqs = [
     {
@@ -39,19 +45,19 @@ export default function SettingsScreen() {
 
   const languages = ['English', 'Spanish', 'French', 'German', 'Chinese', 'Japanese'];
 
+   const handleLogout = async () => {
+    try {
+      await signOut(); // Sign out the user
+      navigation.navigate('Login'); // Navigate to Login screen
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* Header Section */}
-        <View style={styles.header}>
-          <Avatar.Image
-            size={64}
-            source={{ uri: 'https://placeholder.co/150x150' }}
-          />
-          <Text style={styles.username}>Iheb Chebbi</Text>
-          <Text style={styles.userEmail}>johndoe@example.com</Text>
-        </View>
+            <Header />
 
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         {/* Settings Options */}
         <View style={styles.settingsSection}>
           <TouchableOpacity style={styles.settingsItem}>
@@ -115,11 +121,40 @@ export default function SettingsScreen() {
             icon="logout"
             style={styles.logoutButton}
             labelStyle={styles.logoutText}
-            onPress={() => console.log('Log Out')}
+            onPress={() => setLogoutModalVisible(true)} // Open the modal when logout button is pressed
           >
             Log Out
           </Button>
         </View>
+
+            {/* Logout Confirmation Modal */}
+            <Modal
+          animationType="fade"
+          transparent={true}
+          visible={logoutModalVisible}
+          onRequestClose={() => setLogoutModalVisible(false)}
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalTitle}>Are you sure you want to log out?</Text>
+              <View style={styles.modalActions}>
+                <Button
+                  onPress={handleLogout}
+                  style={styles.modalButton}
+                >
+                  Yes
+                </Button>
+                <Button
+                  mode="text"
+                  onPress={() => setLogoutModalVisible(false)}
+                  style={styles.modalButtonCancel}
+                >
+                  Cancel
+                </Button>
+              </View>
+            </View>
+          </View>
+        </Modal>
         <Modal
           animationType="slide"
           transparent={true}
@@ -301,7 +336,42 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   closeModalButton: {
-    marginTop: 20,
     alignSelf: 'center',
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    width: '80%',
+    backgroundColor: '#FFF',
+    borderRadius: 12,
+    padding: 20,
+    alignItems: 'center',
+    elevation: 10,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 16,
+  },
+  modalActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+  },
+  modalButton: {
+    width: '45%',
+    backgroundColor: '#FF6B00',
+    borderRadius: 10,
+  },
+  modalButtonCancel: {
+    width: '45%',
+    backgroundColor: '#f0f0f0',
+    borderRadius: 10,
+    color: '#333',
   },
 });

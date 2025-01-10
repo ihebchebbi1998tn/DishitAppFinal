@@ -244,7 +244,7 @@ export default function SignupScreen({ navigation }) {
 
               <TouchableOpacity onPress={handleSignup}>
                 <LinearGradient
-                  colors={['#9d4d06', '#ee9424']}
+                  colors={['#FF6B00', '#ee9424']}
                   start={{ x: 0, y: 1 }}
                   end={{ x: 0, y: 0 }}
                   style={styles.gradientButton}
@@ -258,7 +258,7 @@ export default function SignupScreen({ navigation }) {
               </View>
 
               <TouchableOpacity style={styles.googleButton} onPress={onGooglePress}>
-                <FontAwesome name="google" size={24} color="#DB4437" />
+                <FontAwesome name="google" size={24} color="#FF6B00" />
                 <Text style={styles.googleText}>Sign in with Google</Text>
               </TouchableOpacity>
             </Card>

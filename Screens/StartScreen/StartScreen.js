@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
   underline: {
     textDecorationLine: 'underline',
-    color: '#FF9F43',
+    color: '#FF6B00',
     fontFamily: 'Roboto', // Use Roboto font
   },
   buttonContainer: {
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   loginButton: {
-    backgroundColor: '#FF9F43',
+    backgroundColor: '#FF6B00',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -107,14 +107,14 @@ const styles = StyleSheet.create({
   },
   registerButton: {
     borderWidth: 2,
-    borderColor: '#FF9F43',
+    borderColor: '#FF6B00',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
     width: '95%',
   },
   registerButtonText: {
-    color: '#FF9F43',
+    color: '#FF6B00',
     fontSize: 16,
     fontWeight: 'bold',
     fontFamily: 'Roboto', // Use Roboto font

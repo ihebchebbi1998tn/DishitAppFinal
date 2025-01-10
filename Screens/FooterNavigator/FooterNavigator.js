@@ -3,23 +3,32 @@ import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useEffect } from 'react';
 
 const Tab = createBottomTabNavigator();
+
 
 // Create an empty component for each screen
 const EmptyComponent = () => null;
 
 const FooterNavigator = () => {
   const navigation = useNavigation();
-
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('state', (e) => {
+      const currentScreen = e.data.state.routes[e.data.state.index].name;
+      console.log(`User is in ${currentScreen} screen`);
+    });
+  
+    return unsubscribe;
+  }, [navigation]);
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarStyle: styles.tabBar,
         tabBarShowLabel: true,
-        tabBarActiveTintColor: '#FF6B00',
-        tabBarInactiveTintColor: '#8E8E93',
+        tabBarActiveTintColor: '#FF6B00', // Active tab color
+        tabBarInactiveTintColor: '#8E8E93', // Inactive tab color
         tabBarLabelStyle: styles.tabLabel,
       }}
     >
@@ -38,7 +47,6 @@ const FooterNavigator = () => {
           ),
         }}
       />
-
       <Tab.Screen
         name="Community"
         component={EmptyComponent}
@@ -51,11 +59,9 @@ const FooterNavigator = () => {
         options={{
           tabBarIcon: ({ color }) => (
             <Icon name="earth-outline" size={25.2} color={color} />
-
           ),
         }}
       />
-
       <Tab.Screen
         name="Cart"
         component={EmptyComponent}
@@ -74,7 +80,6 @@ const FooterNavigator = () => {
           tabBarLabel: '', // Hide label for Cart tab
         }}
       />
-
       <Tab.Screen
         name="Info"
         component={EmptyComponent}
@@ -90,7 +95,6 @@ const FooterNavigator = () => {
           ),
         }}
       />
-
       <Tab.Screen
         name="Profile"
         component={EmptyComponent}

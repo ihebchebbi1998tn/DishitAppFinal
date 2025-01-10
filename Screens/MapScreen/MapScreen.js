@@ -4,31 +4,26 @@ import MapView, { Polygon, PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import FooterNavigator from '../FooterNavigator/FooterNavigator';
 import { mapCustomStyle } from './mapStyle';
-import FilterModal from './FilterModal';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ActionButtons from './Components/ActionButtons';
-import Header from '../Commons/Header';
-import zones from './data/zones';
-export default function MapScreen() {
+import DraggableSearch from './Components/DraggableSearch';
+import HeaderMap from '../Commons/HeaderMap';
+import zones from './data/zones'; // Ensure zones are correctly imported
+
+export default function MainScreen() {
   const [showZones, setShowZones] = useState(true);
   const [showPins, setShowPins] = useState(true);
-  const [isVisible, setIsVisible] = useState(false);
 
   const montrealRegion = {
-    latitude: 45.5017,
-    longitude: -73.5673,
-    latitudeDelta: 0.1,
-    longitudeDelta: 0.1,
+    latitude: 45.505, // Center of Montreal
+    longitude: -73.577,
+    latitudeDelta: 0.05, // Smaller value to zoom into the zones
+    longitudeDelta: 0.05,
   };
-
-  const handleClose = () => setIsVisible(false);
-
-  const handleFilterPress = () => setIsVisible(true);
 
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <Header />
+        <HeaderMap />
         <MapView
           provider={PROVIDER_GOOGLE}
           style={styles.map}
@@ -52,17 +47,17 @@ export default function MapScreen() {
               </React.Fragment>
             ))}
         </MapView>
-
-        <ActionButtons onPlusPress={() => {}} onFilterPress={handleFilterPress} />
-        <FilterModal
-          isVisible={isVisible}
-          showZones={showZones}
-          showPins={showPins}
-          setShowZones={setShowZones}
-          setShowPins={setShowPins}
-          onClose={handleClose}
-        />
       </SafeAreaView>
+
+      <DraggableSearch
+        onSearch={(query) => console.log('Search query:', query)}
+        customStyles={{
+          position: 'absolute',
+          bottom: '10%',
+          backgroundColor: 'white',
+        }}
+      />
+
       <View style={styles.footerContainer}>
         <FooterNavigator />
       </View>
@@ -76,27 +71,6 @@ const styles = StyleSheet.create({
   },
   map: {
     flex: 1,
-  },
-  floatingInputContainer: {
-    position: 'absolute',
-    top: '7%',
-    left: 16,
-    right: 16,
-    zIndex: 2,
-  },
-  floatingInput: {
-    backgroundColor: '#fff',
-    padding: 14,
-    borderRadius: 12,
-    fontSize: 16,
-    color: '#333',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 5,
-    borderWidth: 1,
-    borderColor: '#D0D0D0',
   },
   footerContainer: {
     position: 'absolute',
