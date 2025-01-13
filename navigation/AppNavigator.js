@@ -13,7 +13,7 @@ import ScreenHome from '../Screens/ScreenHome';
 import SettingsScreen from '../Screens/SettingsScreen/SettingsScreen';
 import MapScreen from '../Screens/MapScreen/MapScreen';
 import CommunityScreen from '../Screens/CommunityScreen/CommunityScreen';
-
+import NotificationScreen from '../Screens/NotificationScreen/NotificationScreen';
 const Stack = createStackNavigator();
 
 function HeaderRightSignOut({ navigation }) {
@@ -87,7 +87,11 @@ export default function AppNavigator() {
         component={SignUpGmail}
         options={{ headerShown: false }} // Hide header for this screen
       />
-      
+      <Stack.Screen
+        name="NotificationScreen"
+        component={NotificationScreen}
+        options={{ headerShown: false }} // Hide header for this screen
+      />
     </Stack.Navigator>
   );
 }

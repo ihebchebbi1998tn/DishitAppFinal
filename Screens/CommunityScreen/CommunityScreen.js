@@ -24,7 +24,7 @@ export default function CommunityScreen() {
           <Header />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.communityHeader}>
-          <LinearGradient colors={['#FF6B00', '#FF8C3B']} style={styles.communityBanner}>
+          <LinearGradient colors={['#893571', '#b8658f']} style={styles.communityBanner}>
             <Text style={styles.bannerText}>Welcome to the Community</Text>
             <Text style={styles.bannerSubText}>Support Local, Share, and Connect</Text>
           </LinearGradient>
@@ -39,6 +39,7 @@ export default function CommunityScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#EDE7F6',
   },
   scrollContainer: {
     paddingBottom: 16,

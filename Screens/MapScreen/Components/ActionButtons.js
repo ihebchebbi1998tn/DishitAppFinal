@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   fab: {
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     width: 56,
     height: 56,
     borderRadius: 28,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   filterFab: {
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     width: 56,
     height: 56,
     borderRadius: 28,

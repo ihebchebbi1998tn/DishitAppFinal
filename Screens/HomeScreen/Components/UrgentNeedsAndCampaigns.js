@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   seeAll: {
     fontSize: 14,
-    color: '#FF6B00',
+    color: '#893571',
   },
   donationCard: {
     marginHorizontal: 8,
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   progress: {
     height: '100%',
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     borderRadius: 4,
   },
   progressText: {
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   donateButton: {
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     flex: 1,
     marginRight: 8,
   },

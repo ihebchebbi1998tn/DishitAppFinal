@@ -27,7 +27,7 @@ const FooterNavigator = () => {
         headerShown: false,
         tabBarStyle: styles.tabBar,
         tabBarShowLabel: true,
-        tabBarActiveTintColor: '#FF6B00', // Active tab color
+        tabBarActiveTintColor: '#893571', // Active tab color
         tabBarInactiveTintColor: '#8E8E93', // Inactive tab color
         tabBarLabelStyle: styles.tabLabel,
       }}
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   cartIconContainer: {
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     width: 57.75,
     height: 57.75,
     borderRadius: 28.875, // Half of width/height for perfect circle

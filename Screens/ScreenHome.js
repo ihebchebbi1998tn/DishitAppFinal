@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FF6B00', // Set background to orange
+    backgroundColor: '#893571', // Set background to orange
   },
   loaderContainer: {
     justifyContent: 'center',

@@ -121,7 +121,7 @@ export default function ForgetScreen({ navigation }) {
           <SafeAreaView style={styles.container}>
             <TouchableOpacity 
               style={styles.goBackIcon} 
-              onPress={() => navigation.navigate('LoginScreen')}
+              onPress={() => navigation.navigate('Login')}
             >
               <MaterialIcons name="arrow-back" size={28} color="#333" />
             </TouchableOpacity>
@@ -140,7 +140,7 @@ export default function ForgetScreen({ navigation }) {
 
               {step === 1 && (
                 <View style={styles.inputContainer}>
-                  <MaterialIcons name="email" size={24} color="#2d733c" />
+                  <MaterialIcons name="email" size={24} color="#b8658f" />
                   <TextInput
                     placeholder="Enter your email"
                     style={styles.input}
@@ -187,7 +187,7 @@ export default function ForgetScreen({ navigation }) {
               {step === 3 && (
                 <>
                   <View style={styles.inputContainer}>
-                    <MaterialIcons name="lock" size={24} color="#2d733c" />
+                    <MaterialIcons name="lock" size={24} color="#b8658f" />
                     <TextInput
                       placeholder="New Password"
                       style={styles.input}
@@ -200,13 +200,13 @@ export default function ForgetScreen({ navigation }) {
                       <MaterialIcons 
                         name={passwordVisible ? "visibility-off" : "visibility"} 
                         size={24} 
-                        color="#2d733c" 
+                        color="#b8658f" 
                       />
                     </TouchableOpacity>
                   </View>
 
                   <View style={styles.inputContainer}>
-                    <MaterialIcons name="lock" size={24} color="#2d733c" />
+                    <MaterialIcons name="lock" size={24} color="#b8658f" />
                     <TextInput
                       placeholder="Confirm New Password"
                       style={styles.input}
@@ -219,7 +219,7 @@ export default function ForgetScreen({ navigation }) {
                       <MaterialIcons 
                         name={confirmPasswordVisible ? "visibility-off" : "visibility"} 
                         size={24} 
-                        color="#2d733c" 
+                        color="#b8658f" 
                       />
                     </TouchableOpacity>
                   </View>
@@ -228,7 +228,7 @@ export default function ForgetScreen({ navigation }) {
 
               <TouchableOpacity onPress={handleNextStep}>
                 <LinearGradient
-                  colors={['#9d4d06', '#ee9424']}
+                  colors={['#b8658f', '#893571']}
                   start={{ x: 0, y: 1 }}
                   end={{ x: 0, y: 0 }}
                   style={styles.gradientButton}
@@ -244,7 +244,7 @@ export default function ForgetScreen({ navigation }) {
                   Remember your password?{' '}
                   <Text 
                     style={styles.loginLink}
-                    onPress={() => navigation.navigate('LoginScreen')}
+                    onPress={() => navigation.navigate('Login')}
                   >
                     Login
                   </Text>

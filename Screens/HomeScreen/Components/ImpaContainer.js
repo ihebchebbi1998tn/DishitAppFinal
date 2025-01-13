@@ -6,7 +6,7 @@ const ImpaContainer = () => {
   return (
     <View style={styles.impactContainer}>
       <LinearGradient
-        colors={['#FF6B00', '#FF8C3B']}
+        colors={['#893571', '#b8658f']}
         style={styles.impactCard}
       >
         <Text style={styles.impactTitle}>Your Impact</Text>

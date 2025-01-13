@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     position: 'absolute',
-    bottom: '23%',
+    bottom: '27%',
     left: '8%',
   },
   heading: {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
   underline: {
     textDecorationLine: 'underline',
-    color: '#FF6B00',
+    color: '#893571',
     fontFamily: 'Roboto', // Use Roboto font
   },
   buttonContainer: {
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   loginButton: {
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -107,14 +107,14 @@ const styles = StyleSheet.create({
   },
   registerButton: {
     borderWidth: 2,
-    borderColor: '#FF6B00',
+    borderColor: '#893571',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
     width: '95%',
   },
   registerButtonText: {
-    color: '#FF6B00',
+    color: '#893571',
     fontSize: 16,
     fontWeight: 'bold',
     fontFamily: 'Roboto', // Use Roboto font

@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         color: '#666',
       },
       signupLink: {
-        color: '#2d733c',
+        color: '#b8658f',
         fontWeight: 'bold',
       },
 });

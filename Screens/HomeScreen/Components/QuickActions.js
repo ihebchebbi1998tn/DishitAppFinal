@@ -6,15 +6,15 @@ const QuickActions = () => {
   return (
     <View style={styles.quickActions}>
       <TouchableOpacity style={styles.actionButton}>
-        <MaterialCommunityIcons name="food-apple" size={24} color="#FF6B00" />
+        <MaterialCommunityIcons name="food-apple" size={24} color="#893571" />
         <Text style={styles.actionText}>Donate</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.actionButton}>
-        <MaterialCommunityIcons name="map-marker" size={24} color="#FF6B00" />
+        <MaterialCommunityIcons name="map-marker" size={24} color="#893571" />
         <Text style={styles.actionText}>Find NGOs</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.actionButton}>
-        <MaterialCommunityIcons name="history" size={24} color="#FF6B00" />
+        <MaterialCommunityIcons name="history" size={24} color="#893571" />
         <Text style={styles.actionText}>History</Text>
       </TouchableOpacity>
     </View>

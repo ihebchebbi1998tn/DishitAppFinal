@@ -8,6 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import DraggableSearch from './Components/DraggableSearch';
 import HeaderMap from '../Commons/HeaderMap';
 import zones from './data/zones'; // Ensure zones are correctly imported
+import FloatingLocationButton from './Components/FloatingLocationButton';
 
 export default function MainScreen() {
   const [showZones, setShowZones] = useState(true);
@@ -36,12 +37,12 @@ export default function MainScreen() {
                 <Polygon
                   coordinates={zone.coordinates}
                   fillColor="rgba(255, 107, 0, 0.3)"
-                  strokeColor="#ff6b00"
+                  strokeColor="#893571"
                   strokeWidth={2}
                 />
                 {showPins && (
                   <Marker coordinate={zone.markerPosition}>
-                    <MaterialCommunityIcons name="map-marker" size={32} color="#FF6B00" />
+                    <MaterialCommunityIcons name="map-marker" size={32} color="#893571" />
                   </Marker>
                 )}
               </React.Fragment>
@@ -57,7 +58,7 @@ export default function MainScreen() {
           backgroundColor: 'white',
         }}
       />
-
+   <FloatingLocationButton />
       <View style={styles.footerContainer}>
         <FooterNavigator />
       </View>

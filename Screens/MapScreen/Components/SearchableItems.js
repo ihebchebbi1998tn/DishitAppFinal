@@ -1,19 +1,21 @@
 import React from 'react';
-import { 
-  FlatList, 
-  Image, 
-  StyleSheet, 
-  Text, 
-  View, 
-  TouchableOpacity 
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
 } from 'react-native';
-import { MaterialIcons, FontAwesome } from '@expo/vector-icons'; // Assuming using Expo
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
+
+const getRandomImage = () =>
+  `https://picsum.photos/seed/${Math.random()}/200/120`;
 
 const SearchableItems = () => {
   const carouselData = [
     {
       id: '1',
-      src: 'https://via.placeholder.com/150',
       name: 'Restaurant A',
       distance: '2.5',
       description: 'Delicious Italian food with authentic recipes.',
@@ -26,7 +28,6 @@ const SearchableItems = () => {
     },
     {
       id: '2',
-      src: 'https://via.placeholder.com/150',
       name: 'Restaurant B',
       distance: '1.2',
       description: 'Fresh sushi and quality ingredients.',
@@ -37,31 +38,39 @@ const SearchableItems = () => {
       deliveryTime: '15-25',
       favorite: false,
     },
+    {
+      id: '3',
+      name: 'Restaurant C',
+      distance: '3.8',
+      description: 'Authentic Indian flavors with rich spices.',
+      rating: 4.8,
+      price: '$',
+      isOpen: true,
+      category: 'Indian',
+      deliveryTime: '30-40',
+      favorite: true,
+    },
   ];
 
   const renderStars = (rating) => {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      stars.push(
-        <FontAwesome
-          key={i}
-          name={i <= rating ? 'star' : 'star-o'}
-          size={12} // Reduced size
-          color={i <= rating ? '#FFA500' : '#BDC3C7'}
-        />
-      );
-    }
-    return stars;
+    return Array.from({ length: 5 }).map((_, i) => (
+      <FontAwesome
+        key={i}
+        name={i < rating ? 'star' : 'star-o'}
+        size={14}
+        color={i < rating ? '#FFA500' : '#BDC3C7'}
+      />
+    ));
   };
 
   const renderItem = ({ item }) => (
     <TouchableOpacity style={styles.itemContainer}>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: item.src }} style={styles.carouselImage} />
+        <Image source={{ uri: getRandomImage() }} style={styles.carouselImage} />
         <TouchableOpacity style={styles.favoriteButton}>
           <MaterialIcons
             name={item.favorite ? 'favorite' : 'favorite-border'}
-            size={20} // Reduced size
+            size={20}
             color="orange"
           />
         </TouchableOpacity>
@@ -77,32 +86,18 @@ const SearchableItems = () => {
       </View>
 
       <View style={styles.infoContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.restaurantName}>{item.name}</Text>
-        </View>
-
-        <View style={styles.ratingContainer}>
-        </View>
-
+        <Text style={styles.restaurantName}>{item.name}</Text>
+        <View style={styles.ratingContainer}>{renderStars(item.rating)}</View>
         <Text style={styles.description} numberOfLines={2}>
           {item.description}
         </Text>
-
         <View style={styles.footerContainer}>
           <View style={styles.distanceContainer}>
-            <MaterialIcons
-              name="location-on"
-              size={14} // Reduced size
-              color="orange"
-            />
+            <MaterialIcons name="location-on" size={14} color="orange" />
             <Text style={styles.distance}>{item.distance} km</Text>
           </View>
           <View style={styles.deliveryContainer}>
-            <MaterialIcons
-              name="delivery-dining"
-              size={14} // Reduced size
-              color="green"
-            />
+            <MaterialIcons name="delivery-dining" size={14} color="green" />
             <Text style={styles.deliveryTime}>{item.deliveryTime} mins</Text>
           </View>
         </View>
@@ -124,17 +119,18 @@ const SearchableItems = () => {
 
 const styles = StyleSheet.create({
   listContainer: {
-    padding: 8, // Reduced padding
+    padding: 8,
   },
   itemContainer: {
-    width: 200, // Reduced card width
+    width: 220,
+    height: '27%', // Fixed height
     backgroundColor: 'white',
-    borderRadius: 10, // Reduced radius
-    marginRight: 12, // Reduced margin
+    borderRadius: 10,
+    marginRight: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
-    shadowRadius: 2.8, // Reduced shadow
+    shadowRadius: 3,
     elevation: 4,
   },
   imageContainer: {
@@ -142,92 +138,62 @@ const styles = StyleSheet.create({
   },
   carouselImage: {
     width: '100%',
-    height: 120, // Reduced height
-    borderTopLeftRadius: 10, // Reduced radius
-    borderTopRightRadius: 10, // Reduced radius
+    height: 120,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   favoriteButton: {
     position: 'absolute',
-    right: 8, // Reduced position offset
-    top: 8, // Reduced position offset
+    right: 10,
+    top: 10,
     backgroundColor: 'white',
-    borderRadius: 16, // Reduced radius
-    padding: 6, // Reduced padding
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.15,
-    shadowRadius: 1.5, // Reduced shadow
+    borderRadius: 15,
+    padding: 5,
     elevation: 3,
   },
   openBadge: {
     position: 'absolute',
-    left: 8, // Reduced position offset
-    top: 8, // Reduced position offset
+    left: 10,
+    top: 10,
     backgroundColor: '#4CAF50',
-    paddingHorizontal: 6, // Reduced padding
-    paddingVertical: 3, // Reduced padding
-    borderRadius: 3, // Reduced radius
+    paddingHorizontal: 6,
+    paddingVertical: 3,
+    borderRadius: 3,
   },
   closedBadge: {
     backgroundColor: '#FF5252',
   },
   openText: {
     color: 'white',
-    fontSize: 10, // Reduced font size
+    fontSize: 10,
     fontWeight: 'bold',
   },
   closedText: {
     color: 'white',
-    fontSize: 10, // Reduced font size
+    fontSize: 10,
     fontWeight: 'bold',
   },
   infoContainer: {
-    padding: 10, // Reduced padding
-  },
-  headerRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    padding: 10,
   },
   restaurantName: {
-    fontSize: 14, // Reduced font size
+    fontSize: 16,
     fontWeight: 'bold',
+    marginBottom: 4,
     color: '#2D3436',
-  },
-  price: {
-    color: '#FFA500',
-    fontWeight: 'bold',
-    fontSize: 12, // Reduced font size
   },
   ratingContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: 4, // Reduced margin
-  },
-  stars: {
-    flexDirection: 'row',
-    marginRight: 4, // Reduced margin
-  },
-  ratingText: {
-    color: '#FFA500',
-    fontWeight: 'bold',
-    fontSize: 12, // Reduced font size
-  },
-  category: {
-    color: '#636E72',
-    fontSize: 12, // Reduced font size
-    marginBottom: 4, // Reduced margin
+    marginBottom: 8,
   },
   description: {
+    fontSize: 12,
     color: '#636E72',
-    fontSize: 11, // Reduced font size
-    lineHeight: 15, // Reduced line height
-    marginBottom: 8, // Reduced margin
+    marginBottom: 8,
   },
   footerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 4, // Reduced margin
   },
   distanceContainer: {
     flexDirection: 'row',
@@ -238,14 +204,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   distance: {
-    marginLeft: 3, // Reduced margin
+    marginLeft: 3,
+    fontSize: 12,
     color: '#636E72',
-    fontSize: 11, // Reduced font size
   },
   deliveryTime: {
-    marginLeft: 3, // Reduced margin
+    marginLeft: 3,
+    fontSize: 12,
     color: '#636E72',
-    fontSize: 11, // Reduced font size
   },
 });
 

@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: width * 0.04,
   },
   forgotPassword: {
-    color: '#2d733c',
+    color: '#b8658f',
     textAlign: 'right',
     marginBottom: height * 0.02,
     fontSize: width * 0.035,
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   signupLink: {
-    color: '#2d733c',
+    color: '#b8658f',
     fontWeight: 'bold',
   },
 });

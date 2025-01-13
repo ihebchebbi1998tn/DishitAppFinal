@@ -24,21 +24,21 @@ export default function Cards4() {
         <View style={styles.actionGrid}>
           <View style={styles.row}>
             <TouchableOpacity style={styles.gridItem}>
-              <Icon name="gift" size={30} color="#FF6B00" />
+              <Icon name="gift" size={30} color="#893571" />
               <Text>Give</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.gridItem}>
-              <Icon name="hand-heart" size={30} color="#FF6B00" />
+              <Icon name="hand-heart" size={30} color="#893571" />
               <Text>Support</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.row}>
             <TouchableOpacity style={styles.gridItem}>
-              <Icon name="post" size={30} color="#FF6B00" />
+              <Icon name="post" size={30} color="#893571" />
               <Text>Post</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.gridItem}>
-              <Icon name="account-group" size={30} color="#FF6B00" />
+              <Icon name="account-group" size={30} color="#893571" />
               <Text>Join</Text>
             </TouchableOpacity>
           </View>
@@ -117,7 +117,6 @@ export default function Cards4() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
   },
   container: {
     flex: 1,
@@ -154,7 +153,7 @@ const styles = StyleSheet.create({
     maxHeight: 32,
   },
   categoryButton: {
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     paddingHorizontal: 16,
     paddingVertical: 6,
     borderRadius: 16,
@@ -204,7 +203,7 @@ const styles = StyleSheet.create({
   },
   progress: {
     height: '100%',
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     borderRadius: 3,
   },
   progressText: {
@@ -213,7 +212,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   donateButton: {
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     padding: 12,
     borderRadius: 8,
     alignItems: 'center',

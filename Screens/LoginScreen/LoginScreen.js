@@ -157,7 +157,7 @@ export default function LoginScreen({ navigation }) {
               <Text style={styles.title}>Welcome Back 👋</Text>
               <Text style={styles.subtitle}>Login to continue</Text>
               <View style={styles.inputContainer}>
-                <MaterialIcons name="email" size={24} color="#2d733c" />
+                <MaterialIcons name="email" size={24} color="#b8658f" />
                 <TextInput
                   placeholder="Enter your email"
                   style={styles.input}
@@ -168,7 +168,7 @@ export default function LoginScreen({ navigation }) {
                 />
               </View>
               <View style={styles.inputContainer}>
-                <MaterialIcons name="lock" size={24} color="#2d733c" />
+                <MaterialIcons name="lock" size={24} color="#b8658f" />
                 <TextInput
                   placeholder="Enter your password"
                   style={styles.input}
@@ -182,7 +182,7 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.forgotPassword}>Forgot Password?</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={handleLogin} disabled={loading}>
-                <LinearGradient colors={['#FF6B00', '#ee9424']} start={{ x: 0, y: 1 }} end={{ x: 0, y: 0 }} style={styles.gradientButton}>
+                <LinearGradient colors={['#b8658f', '#893571']} start={{ x: 0, y: 1 }} end={{ x: 0, y: 0 }} style={styles.gradientButton}>
                   <Text style={styles.buttonText}>{loading ? 'Logging in...' : 'Login'}</Text>
                 </LinearGradient>
               </TouchableOpacity>
@@ -192,7 +192,7 @@ export default function LoginScreen({ navigation }) {
               </View>
 
               <TouchableOpacity style={styles.googleButton} onPress={onGooglePress}>
-                <FontAwesome name="google" size={24} color="#FF6B00" />
+                <FontAwesome name="google" size={24} color="#893571" />
                 <Text style={styles.googleText}>Sign in with Google</Text>
               </TouchableOpacity>
               
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     fontSize: width * 0.04,
   },
   forgotPassword: {
-    color: '#2d733c',
+    color: '#b8658f',
     textAlign: 'right',
     marginBottom: height * 0.02,
     fontSize: width * 0.035,
@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   signupLink: {
-    color: '#2d733c',
+    color: '#b8658f',
     fontWeight: 'bold',
   },
 });

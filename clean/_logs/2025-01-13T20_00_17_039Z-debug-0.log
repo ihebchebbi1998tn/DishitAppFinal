@@ -1,0 +1,29 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\ihebc\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.6.0
+2 info using node@v20.14.0
+3 silly config:load:file:C:\Users\ihebc\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config:load:file:C:\Users\ihebc\OneDrive\Desktop\Dishit\Dishit\.npmrc
+5 silly config:load:file:C:\Users\ihebc\.npmrc
+6 silly config:load:file:C:\Users\ihebc\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm run dev
+8 verbose argv "run" "dev"
+9 verbose logfile logs-max:10 dir:C:\Users\ihebc\OneDrive\Desktop\Dishit\Dishit\clean\_logs\2025-01-13T20_00_17_039Z-
+10 verbose logfile C:\Users\ihebc\OneDrive\Desktop\Dishit\Dishit\clean\_logs\2025-01-13T20_00_17_039Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 verbose stack Error: Missing script: "dev"
+12 verbose stack
+12 verbose stack To see a list of scripts, run:
+12 verbose stack   npm run
+12 verbose stack     at RunScript.run (C:\Users\ihebc\AppData\Roaming\npm\node_modules\npm\lib\commands\run-script.js:79:13)
+12 verbose stack     at async module.exports (C:\Users\ihebc\AppData\Roaming\npm\node_modules\npm\lib\cli\entry.js:74:5)
+13 verbose cwd C:\Users\ihebc\OneDrive\Desktop\Dishit\Dishit
+14 verbose Windows_NT 10.0.22631
+15 verbose node v20.14.0
+16 verbose npm  v10.6.0
+17 error Missing script: "dev"
+17 error
+17 error To see a list of scripts, run:
+17 error   npm run
+18 verbose exit 1
+19 verbose code 1
+20 error A complete log of this run can be found in: C:\Users\ihebc\OneDrive\Desktop\Dishit\Dishit\clean\_logs\2025-01-13T20_00_17_039Z-debug-0.log

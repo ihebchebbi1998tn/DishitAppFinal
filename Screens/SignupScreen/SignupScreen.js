@@ -151,7 +151,7 @@ export default function SignupScreen({ navigation }) {
               <Text style={styles.subtitle}>Sign up to get started</Text>
 
               <View style={styles.inputContainer}>
-                <MaterialIcons name="person" size={24} color="#2d733c" />
+                <MaterialIcons name="person" size={24} color="#b8658f" />
                 <TextInput
                   placeholder="First Name"
                   style={styles.input}
@@ -161,7 +161,7 @@ export default function SignupScreen({ navigation }) {
               </View>
 
               <View style={styles.inputContainer}>
-                <MaterialIcons name="person" size={24} color="#2d733c" />
+                <MaterialIcons name="person" size={24} color="#b8658f" />
                 <TextInput
                   placeholder="Last Name"
                   style={styles.input}
@@ -171,7 +171,7 @@ export default function SignupScreen({ navigation }) {
               </View>
 
               <View style={styles.inputContainer}>
-                <MaterialIcons name="email" size={24} color="#2d733c" />
+                <MaterialIcons name="email" size={24} color="#b8658f" />
                 <TextInput
                   placeholder="Email"
                   style={styles.input}
@@ -183,7 +183,7 @@ export default function SignupScreen({ navigation }) {
               </View>
 
               <View style={styles.inputContainer}>
-                  <MaterialIcons name="public" size={24} color="#2d733c" />
+                  <MaterialIcons name="public" size={24} color="#b8658f" />
                   <Picker
                     selectedValue={country}
                     style={styles.input}
@@ -196,7 +196,7 @@ export default function SignupScreen({ navigation }) {
                 </View>
                 
               <View style={styles.inputContainer}>
-                  <MaterialIcons name="lock" size={24} color="#2d733c" />
+                  <MaterialIcons name="lock" size={24} color="#b8658f" />
                   <TextInput
                     placeholder="Password"
                     style={styles.input}
@@ -217,7 +217,7 @@ export default function SignupScreen({ navigation }) {
                 </View>
 
                 <View style={styles.inputContainer}>
-                  <MaterialIcons name="lock" size={24} color="#2d733c" />
+                  <MaterialIcons name="lock" size={24} color="#b8658f" />
                   <TextInput
                     placeholder="Confirm Password"
                     style={styles.input}
@@ -241,10 +241,9 @@ export default function SignupScreen({ navigation }) {
 
                
 
-
               <TouchableOpacity onPress={handleSignup}>
                 <LinearGradient
-                  colors={['#FF6B00', '#ee9424']}
+                  colors={['#b8658f', '#893571']}
                   start={{ x: 0, y: 1 }}
                   end={{ x: 0, y: 0 }}
                   style={styles.gradientButton}
@@ -258,7 +257,7 @@ export default function SignupScreen({ navigation }) {
               </View>
 
               <TouchableOpacity style={styles.googleButton} onPress={onGooglePress}>
-                <FontAwesome name="google" size={24} color="#FF6B00" />
+                <FontAwesome name="google" size={24} color="#893571" />
                 <Text style={styles.googleText}>Sign in with Google</Text>
               </TouchableOpacity>
             </Card>
@@ -398,7 +397,7 @@ const styles = {
     color: '#666',
   },
   signupLink: {
-    color: '#2d733c',
+    color: '#b8658f',
     fontWeight: 'bold',
   },
 };

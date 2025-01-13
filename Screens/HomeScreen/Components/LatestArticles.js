@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   tag: {
-    backgroundColor: 'rgba(255, 107, 0, 0.9)',
+    backgroundColor: 'rgba(151,58,127,5)',
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 12,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   claimButton: {
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     padding: 10,
     borderRadius: 12,
     alignItems: 'center',

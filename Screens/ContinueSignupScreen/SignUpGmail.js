@@ -155,7 +155,7 @@ export default function SignUpGmail({ navigation }) {
               </View>
 
               <View style={styles.inputContainer}>
-                <MaterialIcons name="phone" size={24} color="#2d733c" />
+                <MaterialIcons name="phone" size={24} color="#b8658f" />
                 <TextInput
                   placeholder="Enter your phone number"
                   style={styles.input}
@@ -166,7 +166,7 @@ export default function SignUpGmail({ navigation }) {
               </View>
 
               <View style={styles.inputContainer}>
-                <MaterialIcons name="lock" size={24} color="#2d733c" />
+                <MaterialIcons name="lock" size={24} color="#b8658f" />
                 <TextInput
                   placeholder="Create password"
                   style={styles.input}
@@ -186,7 +186,7 @@ export default function SignUpGmail({ navigation }) {
               </View>
 
               <View style={styles.inputContainer}>
-                <MaterialIcons name="lock" size={24} color="#2d733c" />
+                <MaterialIcons name="lock" size={24} color="#b8658f" />
                 <TextInput
                   placeholder="Confirm password"
                   style={styles.input}

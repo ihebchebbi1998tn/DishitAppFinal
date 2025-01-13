@@ -41,7 +41,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F9FA',
+    backgroundColor: '#EDE7F6',
   },
   scrollContainer: {
     paddingBottom: 20,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   seeAll: {
     fontSize: 14,
-    color: '#FF6B00',
+    color: '#893571',
   },
   
   articleCard: {
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   readMore: {
     fontSize: 12,
-    color: '#FF6B00',
+    color: '#893571',
     marginTop: 8,
   },
 });

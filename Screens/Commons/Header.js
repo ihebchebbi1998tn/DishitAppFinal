@@ -1,104 +1,163 @@
 import React, { useState } from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
-import { IconButton, Searchbar } from 'react-native-paper';
+import { Text, View, Image, StyleSheet, StatusBar } from 'react-native';
+import { IconButton, Searchbar, Surface } from 'react-native-paper';
 import { useWindowDimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const { width } = useWindowDimensions();
+  const navigation = useNavigation();
+
+  const navigateToNotifications = () => {
+    navigation.navigate('NotificationScreen');
+  };
 
   return (
-    <View style={styles.header}>
-      <View style={styles.headerTop}>
-        <View style={styles.userInfo}>
-          {/* Profile Picture */}
-          <Image 
-            source={{ uri: 'https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg' }}
-            style={styles.profilePic}
-          />
-          <View>
-            <Text style={styles.greeting}>Good Morning,</Text>
-            <Text style={styles.username}>Iheb Chebbi</Text>
+    <Surface style={styles.container}>
+      <LinearGradient
+        colors={['#FFFFFF', '#F8F9FA']}
+        style={styles.header}
+      >
+        <View style={styles.headerTop}>
+          <View style={styles.userInfo}>
+            <Surface style={styles.profilePicContainer}>
+              <Image
+                source={{ 
+                  uri: 'https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg' 
+                }}
+                style={styles.profilePic}
+              />
+            </Surface>
+            <View style={styles.greetingContainer}>
+              <Text style={styles.greeting}>Good Morning,</Text>
+              <Text style={styles.username}>Iheb Chebbi</Text>
+            </View>
+          </View>
+          
+          <View style={styles.headerIcons}>
+            <View style={styles.iconContainer}>
+              <View style={styles.notificationWrapper}>
+                <IconButton
+                  icon="bell-outline"
+                  size={24}
+                  style={styles.iconButton}
+                  onPress={navigateToNotifications}
+                  rippleColor="rgba(137, 53, 113, 0.1)"
+                />
+                <View style={styles.notificationDot} />
+              </View>
+              <IconButton
+                icon="account-eye-outline"
+                size={24}
+                style={styles.iconButton}
+                rippleColor="rgba(137, 53, 113, 0.1)"
+              />
+            </View>
           </View>
         </View>
-        <View style={styles.headerIcons}>
-          <View style={styles.notificationWrapper}>
-            <IconButton icon="bell-outline" size={24} style={styles.iconButton} />
-            <View style={styles.notificationDot} />
-          </View>
-          <IconButton icon="account-eye-outline" size={24} style={styles.iconButton} />
-        </View>
-      </View>
 
-      {/* Search Bar */}
-      <Searchbar
-        placeholder="Search for meals or NGOs..."
-        onChangeText={setSearchQuery}
-        value={searchQuery}
-        style={styles.searchBar}
-        iconColor="#FF6B00"
-      />
-    </View>
+        <Searchbar
+          placeholder="Search for meals or NGOs..."
+          onChangeText={setSearchQuery}
+          value={searchQuery}
+          style={styles.searchBar}
+          iconColor="#893571"
+          placeholderTextColor="#757575"
+          inputStyle={styles.searchInput}
+        />
+      </LinearGradient>
+    </Surface>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    elevation: 4,
+  },
   header: {
-    paddingHorizontal: 16,
-    paddingBottom: 16,
+    paddingHorizontal: 20,
+    paddingVertical: 16,
     backgroundColor: '#FFF',
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
   },
   headerTop: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 16,
   },
   userInfo: {
     flexDirection: 'row',
     alignItems: 'center',
   },
+  profilePicContainer: {
+    elevation: 3,
+    borderRadius: 25,
+    marginRight: 12,
+  },
   profilePic: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 10,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+  },
+  greetingContainer: {
+    justifyContent: 'center',
   },
   greeting: {
     fontSize: 14,
     color: '#757575',
+    fontFamily: 'System',
+    letterSpacing: 0.25,
   },
   username: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 18,
+    fontWeight: '700',
     color: '#212121',
+    letterSpacing: 0.15,
   },
   headerIcons: {
     flexDirection: 'row',
   },
+  iconContainer: {
+    flexDirection: 'row',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    elevation: 2,
+  },
   iconButton: {
-    marginHorizontal: 6,
+    margin: 0,
+    backgroundColor: 'transparent',
   },
   notificationWrapper: {
     position: 'relative',
   },
   notificationDot: {
     position: 'absolute',
-    top: '30%',
-    left: '30%',
+    top: 12,
+    right: 12,
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
+    borderWidth: 1,
+    borderColor: '#FFFFFF',
   },
   searchBar: {
-    borderRadius: 8,
-    backgroundColor: '#EFEFEF',
+    borderRadius: 12,
+    backgroundColor: '#F5F5F5',
     elevation: 0,
+    height: 48,
+    marginTop: 4,
+  },
+  searchInput: {
+    fontSize: 16,
+    color: '#212121',
+    paddingLeft: 4,
   },
 });
 

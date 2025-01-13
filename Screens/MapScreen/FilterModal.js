@@ -20,12 +20,12 @@ export default function FilterModal({ isVisible, showZones, showPins, setShowZon
 
           <View style={styles.optionRow}>
             <Text style={styles.optionText}>Show Zones</Text>
-            <Switch value={showZones} onValueChange={setShowZones} color="#FF6B00" />
+            <Switch value={showZones} onValueChange={setShowZones} color="#893571" />
           </View>
 
           <View style={styles.optionRow}>
             <Text style={styles.optionText}>Show Pins</Text>
-            <Switch value={showPins} onValueChange={setShowPins} color="#FF6B00" />
+            <Switch value={showPins} onValueChange={setShowPins} color="#893571" />
           </View>
         </View>
       </View>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 10,
     right: 10,
-    backgroundColor: '#FF6B00',
+    backgroundColor: '#893571',
     padding: 8,
     borderRadius: 20,
   },
